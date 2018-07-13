@@ -38,7 +38,7 @@
 // TODO: Try to auto-resolve paths if no parent_id given
 // TODO: The rest of the adapter methods
 
-const isFile = file => file.mimeType !== 'application/vnd.google-apps.folder' || file.kind !== 'drive#file';
+const checkIfFile = file => file.mimeType !== 'application/vnd.google-apps.folder' || file.kind !== 'drive#file';
 
 // Gets basename of a path
 const basename = path => path.split('/').reverse()[0];
@@ -74,17 +74,20 @@ async function fileList(core, gapi, root, options) {
   for await (const result of asyncFileList(gapi, query)) {
     const addition = result
       .filter(file => file.isAppAuthorized === true)
-      .map(file => ({
-        isDirectory: !isFile(file),
-        isFile: isFile(file),
-        mime: file.mimeType,
-        size: parseInt(file.size, 10),
-        path: pathJoin(root.path, file.name),
-        filename: file.name,
-        id: file.id,
-        parent_id: root.id || file.parents[0],
-        stat: {},
-      }));
+      .map(file => {
+        const isFile = checkIfFile(file);
+        return {
+          isFile,
+          isDirectory: !isFile,
+          mime: isFile ? file.mimeType : null,
+          size: isFile ? parseInt(file.size, 10) : null,
+          path: pathJoin(root.path, file.name),
+          filename: file.name,
+          id: file.id,
+          parent_id: root.id || file.parents[0],
+          stat: {}
+        };
+      });
 
     list = list.concat(addition);
   }
