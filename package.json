@@ -1,0 +1,23 @@
+{
+  "name": "@osjs/gdrive-adapter",
+  "version": "1.0.0",
+  "description": "Google Drive VFS Adapter for OS.js v3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/os-js/osjs-gdrive-adapter.git"
+  },
+  "keywords": [
+    "osjs"
+  ],
+  "author": "Anders Evenrud <andersevenrud@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/os-js/osjs-gdrive-adapter/issues"
+  },
+  "homepage": "https://github.com/os-js/osjs-gdrive-adapter#readme",
+  "dependencies": {}
+}
