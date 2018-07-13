@@ -1,6 +1,6 @@
 {
   "name": "@osjs/gdrive-adapter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Google Drive VFS Adapter for OS.js v3",
   "main": "index.js",
   "scripts": {

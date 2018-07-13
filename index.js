@@ -164,7 +164,7 @@ const currentOrCreate = (gapi, file) => file.id
 
 // Our adapter
 const adapter = core => {
-  const osjsgapi = core.make('osjs/gapi').create();
+  const osjsgapi = core.make('osjs/gapi');
   const before = () => osjsgapi.login();
 
   const readdir =(file, options) => before(file)
