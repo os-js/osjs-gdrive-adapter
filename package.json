@@ -4,7 +4,8 @@
   "description": "Google Drive VFS Adapter for OS.js v3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint index.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,9 @@
     "url": "https://github.com/os-js/osjs-gdrive-adapter/issues"
   },
   "homepage": "https://github.com/os-js/osjs-gdrive-adapter#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "@osjs/eslint-config": "^1.0.0",
+    "eslint": "^5.16.0"
+  }
 }

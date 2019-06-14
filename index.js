@@ -108,9 +108,9 @@ const checkResponse = response => response.error
 // Check the download response
 const checkDownloadResponse = (response, file) => response.ok
   ? response.arrayBuffer()
-      .then(body => ({body, mime: file.mime || 'application/octet-stream'}))
+    .then(body => ({body, mime: file.mime || 'application/octet-stream'}))
   : response.json()
-      .then(result => Promise.reject(result.error.message));
+    .then(result => Promise.reject(result.error.message));
 
 // Gets the token
 const getToken = token => `${token.token_type} ${token.access_token}`;
@@ -157,17 +157,17 @@ const folderResource = file => ({
 const currentOrCreate = (gapi, file) => file.id
   ? Promise.resolve(file.id)
   : gapi.client.drive.files.create({
-      resource: fileResource(file)
-    })
-      .then(checkResponse)
-      .then(res => res.id);
+    resource: fileResource(file)
+  })
+    .then(checkResponse)
+    .then(res => res.id);
 
 // Our adapter
 const adapter = core => {
   const osjsgapi = core.make('osjs/gapi');
   const before = () => osjsgapi.login();
 
-  const readdir =(file, options) => before(file)
+  const readdir = (file, options) => before(file)
     .then(gapi => fileList(core, gapi, file, options));
 
   const readfile = (file, options) => checkFile(file)
