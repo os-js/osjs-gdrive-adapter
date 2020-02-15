@@ -175,11 +175,14 @@ const adapter = core => {
     .then(gapi => fetch(...downloadArgs(gapi, file)))
     .then(response => checkDownloadResponse(response, file));
 
-  const writefile = (file, binary, options) => currentOrCreate(gapi, file)
-    .then(id => fetch(...uploadArgs(gapi, id, file, binary)))
-    .then(response => response.json())
-    .then(checkResponse)
-    .then(result => result.size || 0);
+  const writefile = (file, binary, options) => before(file)
+    .then((gapi) => {
+      return currentOrCreate(gapi, file)
+        .then(id => fetch(...uploadArgs(gapi, id, file, binary)))
+        .then(response => response.json())
+        .then(checkResponse)
+        .then(result => result.size || 0);
+    });
 
   const mkdir = (file, options) => checkFile(file)
     .then(() => before(file))
