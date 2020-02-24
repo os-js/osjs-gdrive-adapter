@@ -1,7 +1,7 @@
 {
   "name": "@osjs/gdrive-adapter",
-  "version": "1.0.2",
-  "description": "Google Drive VFS Adapter for OS.js v3",
+  "version": "1.0.3",
+  "description": "Google Drive VFS Adapter for OS.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
